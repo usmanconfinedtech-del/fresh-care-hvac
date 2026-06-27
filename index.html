@@ -106,7 +106,8 @@ input,textarea{font-family:inherit;}
   <section data-screen-label="Hero" ref="{{ setHeroSection }}" style="position:relative;background:#06121E;height:300vh;">
     <div style="position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;">
       <div ref="{{ setFrame }}" style="position:relative;width:calc(100% - clamp(16px,3.2vw,44px));height:calc(100% - clamp(16px,3.2vw,44px));max-width:1680px;border-radius:clamp(16px,2vw,26px);overflow:hidden;background:#06121E;box-shadow:0 50px 110px rgba(4,16,28,.62);will-change:opacity,transform;">
-        <video ref="{{ setVideo }}" preload="auto" poster="assets/poster-cold.png" src="uploads/hf_20260627_161035_96d1448a-2094-49eb-9bb4-5b1c79782275.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></video>
+        <video ref="{{ setVideo }}" preload="auto" src="uploads/hf_20260627_161035_96d1448a-2094-49eb-9bb4-5b1c79782275.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></video>
+        <img ref="{{ setPosterOverlay }}" src="assets/poster-cold.png" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:5;transition:opacity .6s ease;pointer-events:none;" alt="">
         <sc-if value="{{ videoLoading }}" hint-placeholder-val="{{ true }}">
           <div style="position:absolute;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:44px;pointer-events:none;">
             <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
@@ -1237,29 +1238,16 @@ class Component extends DCLogic {
         this.videoEl = e;
         if (!e) return;
         try { e.muted = true; e.setAttribute('muted',''); e.setAttribute('playsinline',''); e.loop = false; } catch(_) {}
-        e.style.opacity = '0';
         this._videoReady = false;
-        const onReady = () => {
+        e.addEventListener('canplay', () => {
           if (this._videoReady) return;
           this._videoReady = true;
-          e.removeEventListener('progress', checkBuf);
-          e.removeEventListener('ended', onReady);
-          try { e.pause(); e.playbackRate = 1; } catch(_){}
-          e.style.transition = 'opacity .5s ease';
-          e.style.opacity = '1';
+          if (this.posterEl) { this.posterEl.style.opacity = '0'; this.posterEl.style.pointerEvents = 'none'; }
           this.setState({ videoReady: true });
-        };
-        const checkBuf = () => {
-          try { if (e.buffered.length && e.buffered.end(e.buffered.length - 1) >= e.duration - 0.4) onReady(); } catch(_) {}
-        };
-        e.addEventListener('loadedmetadata', () => {
-          e.playbackRate = 16;
-          const pr = e.play(); if (pr) pr.catch(() => {});
-          e.addEventListener('progress', checkBuf);
-          e.addEventListener('ended', onReady);
         }, { once: true });
         e.load();
       },
+      setPosterOverlay: (e) => { this.posterEl = e; },
       setHeadline: (e) => { this.headlineEl = e; },
       setHint: (e) => { this.hintEl = e; },
       coreServices: coreServices, addServices: addServices, specials: specials,
