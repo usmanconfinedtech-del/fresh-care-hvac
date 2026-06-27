@@ -109,14 +109,14 @@ input,textarea{font-family:inherit;}
         <video ref="{{ setVideo }}" preload="auto" poster="assets/poster-cold.png" src="uploads/hf_20260627_161035_96d1448a-2094-49eb-9bb4-5b1c79782275.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></video>
         <div style="position:absolute;top:0;left:0;right:0;height:34%;background:linear-gradient(180deg,rgba(6,18,30,.66),rgba(6,18,30,0));pointer-events:none;"></div>
         <div style="position:absolute;left:0;right:0;bottom:0;height:66%;background:linear-gradient(0deg,rgba(6,18,30,.86),rgba(6,18,30,.34) 52%,rgba(6,18,30,0));pointer-events:none;"></div>
-        <div ref="{{ setHeadline }}" style="position:absolute;left:0;right:0;bottom:0;padding:clamp(28px,6vw,76px) clamp(22px,5vw,72px);opacity:1;transform:translateY(0);will-change:opacity,transform;">
+        <div ref="{{ setHeadline }}" style="position:absolute;left:50%;top:50%;text-align:center;width:min(90%,860px);padding:clamp(20px,4vw,44px);opacity:1;transform:translate(-50%,-50%);will-change:opacity,transform;">
           <div style="display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.24);backdrop-filter:blur(8px);padding:8px 15px;border-radius:999px;margin-bottom:22px;">
             <span style="width:9px;height:9px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#7FD6E6,#16A6C9);box-shadow:0 0 12px rgba(127,214,230,.85);"></span>
             <span style="color:#fff;font-family:'Montserrat',sans-serif;font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;">Perfect Temperature, Every Time</span>
           </div>
-          <h1 style="margin:0;max-width:18ch;color:#fff;font-family:'Montserrat',sans-serif;font-weight:600;font-size:clamp(2.5rem,6.4vw,5rem);line-height:1.0;letter-spacing:-.02em;text-wrap:balance;">Comfort You Can Count On — <span style="background:linear-gradient(100deg,#7FD6E6,#F2A24E);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">Year-Round.</span></h1>
-          <p style="margin:18px 0 0;max-width:46ch;color:rgba(255,255,255,.86);font-size:clamp(1.05rem,1.5vw,1.28rem);line-height:1.55;">Honest, expert HVAC service for San Jose homes.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:30px;">
+          <h1 style="margin:0 auto;max-width:18ch;color:#fff;font-family:'Montserrat',sans-serif;font-weight:600;font-size:clamp(2.5rem,6.4vw,5rem);line-height:1.0;letter-spacing:-.02em;text-wrap:balance;">Comfort You Can Count On — <span style="background:linear-gradient(100deg,#7FD6E6,#F2A24E);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">Year-Round.</span></h1>
+          <p style="margin:18px auto 0;max-width:46ch;color:rgba(255,255,255,.86);font-size:clamp(1.05rem,1.5vw,1.28rem);line-height:1.55;">Honest, expert HVAC service for San Jose homes.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:30px;justify-content:center;">
             <a href="tel:+14085129578" style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(180deg,#F7A23E,#F2922A);color:#fff;text-decoration:none;font-family:'Montserrat',sans-serif;font-weight:600;font-size:1.05rem;padding:16px 26px;border-radius:14px;box-shadow:0 14px 30px rgba(224,123,18,.4);transition:transform .2s,box-shadow .2s;" style-hover="transform:translateY(-2px);box-shadow:0 20px 38px rgba(224,123,18,.5);">
               <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               Call (408) 512-9578
@@ -311,6 +311,45 @@ input,textarea{font-family:inherit;}
     </div>
   </section>
 
+  <section data-screen-label="How it works" style="background:#F6F8FA;border-top:1px solid #EAF0F4;border-bottom:1px solid #EAF0F4;">
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(64px,9vw,108px) clamp(20px,5vw,40px);">
+      <div style="text-align:center;max-width:640px;margin:0 auto clamp(34px,5vw,52px);">
+        <div style="display:inline-flex;align-items:center;gap:10px;margin-bottom:16px;"><span style="width:26px;height:2px;background:linear-gradient(90deg,#16A6C9,#F2922A);border-radius:2px;"></span><span style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#0E7E9B;">How It Works</span><span style="width:26px;height:2px;background:linear-gradient(90deg,#F2922A,#16A6C9);border-radius:2px;"></span></div>
+        <h2 style="margin:0;font-family:'Montserrat',sans-serif;font-weight:700;font-size:clamp(1.8rem,3.5vw,2.7rem);line-height:1.1;letter-spacing:-.02em;color:#0C3A5B;text-wrap:balance;">Getting your system fixed is simple.</h2>
+        <p style="margin:14px auto 0;max-width:50ch;color:#5B6B78;font-size:clamp(1rem,1.3vw,1.12rem);line-height:1.6;">Three steps from your call to a comfortable home — no runaround, no guesswork.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(20px,3vw,32px);">
+        <div style="text-align:center;padding:clamp(24px,3vw,36px) clamp(20px,2.4vw,28px);background:#fff;border:1px solid #E7EDF2;border-radius:22px;box-shadow:0 4px 20px rgba(8,42,67,.06);opacity:1;animation-name:reveal;animation-fill-mode:both;animation-timeline:view();animation-range:entry 0% cover 24%;">
+          <div style="display:inline-flex;align-items:center;justify-content:center;width:72px;height:72px;border-radius:50%;background:linear-gradient(180deg,#E7F5FA,#D0EDF6);border:2px solid #16A6C9;margin-bottom:20px;position:relative;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0E7E9B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span style="position:absolute;top:-8px;right:-8px;width:26px;height:26px;border-radius:50%;background:#F2922A;color:#fff;font-family:'Montserrat',sans-serif;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;">1</span>
+          </div>
+          <h3 style="margin:0;font-family:'Montserrat',sans-serif;font-weight:700;font-size:1.18rem;color:#0C3A5B;">Call or Request Online</h3>
+          <p style="margin:10px 0 0;color:#5B6B78;font-size:.97rem;line-height:1.6;">Reach us by phone or through the contact form — we respond quickly and don't put you on hold.</p>
+        </div>
+        <div style="text-align:center;padding:clamp(24px,3vw,36px) clamp(20px,2.4vw,28px);background:#fff;border:1px solid #E7EDF2;border-radius:22px;box-shadow:0 4px 20px rgba(8,42,67,.06);opacity:1;animation-name:reveal;animation-fill-mode:both;animation-timeline:view();animation-range:entry 0% cover 24%;">
+          <div style="display:inline-flex;align-items:center;justify-content:center;width:72px;height:72px;border-radius:50%;background:linear-gradient(180deg,#E7F5FA,#D0EDF6);border:2px solid #16A6C9;margin-bottom:20px;position:relative;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0E7E9B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <span style="position:absolute;top:-8px;right:-8px;width:26px;height:26px;border-radius:50%;background:#F2922A;color:#fff;font-family:'Montserrat',sans-serif;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;">2</span>
+          </div>
+          <h3 style="margin:0;font-family:'Montserrat',sans-serif;font-weight:700;font-size:1.18rem;color:#0C3A5B;">We Diagnose the Problem</h3>
+          <p style="margin:10px 0 0;color:#5B6B78;font-size:.97rem;line-height:1.6;">Brandon arrives on time, inspects your system thoroughly, and gives a clear honest assessment with upfront pricing before any work starts.</p>
+        </div>
+        <div style="text-align:center;padding:clamp(24px,3vw,36px) clamp(20px,2.4vw,28px);background:#fff;border:1px solid #E7EDF2;border-radius:22px;box-shadow:0 4px 20px rgba(8,42,67,.06);opacity:1;animation-name:reveal;animation-fill-mode:both;animation-timeline:view();animation-range:entry 0% cover 24%;">
+          <div style="display:inline-flex;align-items:center;justify-content:center;width:72px;height:72px;border-radius:50%;background:linear-gradient(180deg,#FDEFE0,#FBDFC6);border:2px solid #F2922A;margin-bottom:20px;position:relative;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#C76A0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span style="position:absolute;top:-8px;right:-8px;width:26px;height:26px;border-radius:50%;background:#0C3A5B;color:#fff;font-family:'Montserrat',sans-serif;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;">3</span>
+          </div>
+          <h3 style="margin:0;font-family:'Montserrat',sans-serif;font-weight:700;font-size:1.18rem;color:#0C3A5B;">Enjoy a Comfortable Home</h3>
+          <p style="margin:10px 0 0;color:#5B6B78;font-size:.97rem;line-height:1.6;">We fix it right the first time. No repeat visits, no mystery fees — just a home that works the way it should.</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:clamp(28px,4vw,40px);">
+        <a href="tel:+14085129578" style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(180deg,#F7A23E,#F2922A);color:#fff;text-decoration:none;font-family:'Montserrat',sans-serif;font-weight:600;font-size:1.05rem;padding:16px 30px;border-radius:14px;box-shadow:0 14px 30px rgba(224,123,18,.34);">Call to Get Started — (408) 512-9578</a>
+      </div>
+    </div>
+  </section>
+
   <section data-screen-label="Brands" style="background:#0C3A5B;">
     <div style="max-width:1240px;margin:0 auto;padding:clamp(44px,6vw,72px) clamp(20px,5vw,40px);">
       <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;margin-bottom:clamp(26px,3.5vw,38px);text-align:center;">
@@ -325,6 +364,44 @@ input,textarea{font-family:inherit;}
         <span style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:clamp(1.2rem,2.4vw,1.7rem);letter-spacing:.02em;color:rgba(255,255,255,.55);transition:color .25s,transform .25s;cursor:default;" style-hover="color:#fff;transform:translateY(-2px);">Rheem</span>
         <span style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:clamp(1.2rem,2.4vw,1.7rem);letter-spacing:.02em;color:rgba(255,255,255,.55);transition:color .25s,transform .25s;cursor:default;" style-hover="color:#fff;transform:translateY(-2px);">Bryant</span>
         <span style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:clamp(1.2rem,2.4vw,1.7rem);letter-spacing:.02em;color:rgba(255,255,255,.55);transition:color .25s,transform .25s;cursor:default;" style-hover="color:#fff;transform:translateY(-2px);">Daikin</span>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Testimonials" style="padding:clamp(64px,9vw,108px) clamp(20px,5vw,40px);">
+    <div style="max-width:1240px;margin:0 auto;">
+      <div style="text-align:center;max-width:640px;margin:0 auto clamp(34px,5vw,52px);">
+        <div style="display:inline-flex;align-items:center;gap:10px;margin-bottom:16px;"><span style="width:26px;height:2px;background:linear-gradient(90deg,#16A6C9,#F2922A);border-radius:2px;"></span><span style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#0E7E9B;">What Customers Say</span><span style="width:26px;height:2px;background:linear-gradient(90deg,#F2922A,#16A6C9);border-radius:2px;"></span></div>
+        <h2 style="margin:0;font-family:'Montserrat',sans-serif;font-weight:700;font-size:clamp(1.8rem,3.5vw,2.7rem);line-height:1.1;letter-spacing:-.02em;color:#0C3A5B;text-wrap:balance;">Real words from real San Jose homeowners.</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(16px,2.4vw,24px);">
+        <div style="background:#fff;border:1px solid #E7EDF2;border-radius:22px;padding:clamp(22px,2.8vw,32px);box-shadow:0 4px 20px rgba(8,42,67,.06);display:flex;flex-direction:column;gap:16px;opacity:1;animation-name:reveal;animation-fill-mode:both;animation-timeline:view();animation-range:entry 0% cover 24%;">
+          <div style="display:flex;gap:4px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="#F2922A"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 6 20.4l1.4-6.8L2.3 9l6.9-.7z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F2922A"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 6 20.4l1.4-6.8L2.3 9l6.9-.7z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F2922A"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 6 20.4l1.4-6.8L2.3 9l6.9-.7z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F2922A"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 6 20.4l1.4-6.8L2.3 9l6.9-.7z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F2922A"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 6 20.4l1.4-6.8L2.3 9l6.9-.7z"/></svg></div>
+          <p style="margin:0;color:#41525F;font-size:1rem;line-height:1.7;flex:1;">"Brandon was at my house within hours of calling. My A/C had stopped cooling during a heat wave and he had it running again the same afternoon. Honest pricing — no surprises on the bill."</p>
+          <div style="display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid #EAF0F4;">
+            <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#0C3A5B,#16A6C9);display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:700;font-size:16px;color:#fff;flex:0 0 auto;">M</div>
+            <div><div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:.97rem;color:#0E1A24;">Maria G.</div><div style="font-size:.84rem;color:#94A3AD;">Willow Glen, San Jose</div></div>
+            <div style="margin-left:auto;display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:#F6F9FB;"><svg width="14" height="14" viewBox="0 0 24 24"><path fill="#4285F4" d="M21.6 12.2c0-.6-.1-1.2-.2-1.8H12v3.5h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.2z"/><path fill="#34A853" d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 .9-3.4.9-2.6 0-4.8-1.7-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path fill="#FBBC05" d="M6.4 13.9a6 6 0 0 1 0-3.8V7.5H3.1a10 10 0 0 0 0 9z"/><path fill="#EA4335" d="M12 6.1c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.5l3.3 2.6C7.2 7.8 9.4 6.1 12 6.1z"/></svg></div>
+          </div>
+        </div>
+        <div style="background:#fff;border:1px solid #E7EDF2;border-radius:22px;padding:clamp(22px,2.8vw,32px);box-shadow:0 4px 20px rgba(8,42,67,.06);display:flex;flex-direction:column;gap:16px;opacity:1;animation-name:reveal;animation-fill-mode:both;animation-timeline:view();animation-range:entry 0% cover 24%;">
+          <div style="display:flex;gap:4px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="#F2922A"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 6 20.4l1.4-6.8L2.3 9l6.9-.7z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F2922A"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 6 20.4l1.4-6.8L2.3 9l6.9-.7z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F2922A"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 6 20.4l1.4-6.8L2.3 9l6.9-.7z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F2922A"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 6 20.4l1.4-6.8L2.3 9l6.9-.7z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F2922A"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 6 20.4l1.4-6.8L2.3 9l6.9-.7z"/></svg></div>
+          <p style="margin:0;color:#41525F;font-size:1rem;line-height:1.7;flex:1;">"We've been using Fresh Care for two years now. Brandon always explains what's wrong and what it'll cost before touching anything. Our furnace tune-up was thorough and well worth every penny."</p>
+          <div style="display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid #EAF0F4;">
+            <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#0C3A5B,#F2922A);display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:700;font-size:16px;color:#fff;flex:0 0 auto;">D</div>
+            <div><div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:.97rem;color:#0E1A24;">David R.</div><div style="font-size:.84rem;color:#94A3AD;">Cambrian Park, San Jose</div></div>
+            <div style="margin-left:auto;display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:#F6F9FB;"><svg width="14" height="14" viewBox="0 0 24 24"><path fill="#4285F4" d="M21.6 12.2c0-.6-.1-1.2-.2-1.8H12v3.5h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.2z"/><path fill="#34A853" d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 .9-3.4.9-2.6 0-4.8-1.7-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path fill="#FBBC05" d="M6.4 13.9a6 6 0 0 1 0-3.8V7.5H3.1a10 10 0 0 0 0 9z"/><path fill="#EA4335" d="M12 6.1c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.5l3.3 2.6C7.2 7.8 9.4 6.1 12 6.1z"/></svg></div>
+          </div>
+        </div>
+        <div style="background:#fff;border:1px solid #E7EDF2;border-radius:22px;padding:clamp(22px,2.8vw,32px);box-shadow:0 4px 20px rgba(8,42,67,.06);display:flex;flex-direction:column;gap:16px;opacity:1;animation-name:reveal;animation-fill-mode:both;animation-timeline:view();animation-range:entry 0% cover 24%;">
+          <div style="display:flex;gap:4px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="#F2922A"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 6 20.4l1.4-6.8L2.3 9l6.9-.7z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F2922A"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 6 20.4l1.4-6.8L2.3 9l6.9-.7z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F2922A"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 6 20.4l1.4-6.8L2.3 9l6.9-.7z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F2922A"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 6 20.4l1.4-6.8L2.3 9l6.9-.7z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F2922A"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 6 20.4l1.4-6.8L2.3 9l6.9-.7z"/></svg></div>
+          <p style="margin:0;color:#41525F;font-size:1rem;line-height:1.7;flex:1;">"Our heat pump went out in January and I was dreading the repair bill. Brandon diagnosed it fast, ordered the part, and had us warm again in two days — and the price was more than fair."</p>
+          <div style="display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid #EAF0F4;">
+            <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#16A6C9,#0C3A5B);display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:700;font-size:16px;color:#fff;flex:0 0 auto;">S</div>
+            <div><div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:.97rem;color:#0E1A24;">Sarah T.</div><div style="font-size:.84rem;color:#94A3AD;">Almaden Valley, San Jose</div></div>
+            <div style="margin-left:auto;display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:#F6F9FB;"><svg width="14" height="14" viewBox="0 0 24 24"><path fill="#4285F4" d="M21.6 12.2c0-.6-.1-1.2-.2-1.8H12v3.5h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.2z"/><path fill="#34A853" d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 .9-3.4.9-2.6 0-4.8-1.7-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path fill="#FBBC05" d="M6.4 13.9a6 6 0 0 1 0-3.8V7.5H3.1a10 10 0 0 0 0 9z"/><path fill="#EA4335" d="M12 6.1c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.5l3.3 2.6C7.2 7.8 9.4 6.1 12 6.1z"/></svg></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -347,6 +424,41 @@ input,textarea{font-family:inherit;}
             <p style="margin:8px 0 0;color:#5B6B78;font-size:.93rem;line-height:1.55;">{{ w.d }}</p>
           </div>
         </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Emergency service" style="padding:0 clamp(16px,4vw,40px) clamp(48px,7vw,72px);">
+    <div style="max-width:1240px;margin:0 auto;border-radius:22px;overflow:hidden;background:linear-gradient(135deg,#082A43,#0C3A5B);display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));">
+      <div style="padding:clamp(30px,4vw,52px);display:flex;flex-direction:column;justify-content:center;gap:18px;">
+        <div style="display:inline-flex;align-items:center;gap:9px;background:rgba(242,146,42,.15);border:1px solid rgba(242,146,42,.4);padding:7px 14px;border-radius:999px;align-self:flex-start;">
+          <span style="width:9px;height:9px;border-radius:50%;background:#F2922A;"></span>
+          <span style="color:#F2A24E;font-family:'Montserrat',sans-serif;font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;">Same-Day Service Available</span>
+        </div>
+        <h2 style="margin:0;color:#fff;font-family:'Montserrat',sans-serif;font-weight:700;font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.1;letter-spacing:-.02em;text-wrap:balance;">HVAC emergency? We respond fast.</h2>
+        <p style="margin:0;color:rgba(255,255,255,.78);font-size:clamp(.97rem,1.3vw,1.12rem);line-height:1.65;max-width:46ch;">When your heating or cooling goes down every hour matters. Call us directly and we'll do our best to get to you the same day.</p>
+        <a href="tel:+14085129578" style="display:inline-flex;align-items:center;gap:10px;align-self:flex-start;background:linear-gradient(180deg,#F7A23E,#F2922A);color:#fff;text-decoration:none;font-family:'Montserrat',sans-serif;font-weight:700;font-size:1.08rem;padding:16px 26px;border-radius:13px;box-shadow:0 12px 28px rgba(224,123,18,.4);margin-top:4px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call (408) 512-9578 Now
+        </a>
+      </div>
+      <div style="padding:clamp(24px,3vw,40px);display:grid;grid-template-columns:1fr 1fr;gap:14px;background:rgba(255,255,255,.04);border-left:1px solid rgba(255,255,255,.08);">
+        <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:20px 16px;text-align:center;">
+          <div style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:2rem;color:#fff;line-height:1;">~1hr</div>
+          <div style="margin-top:6px;color:rgba(255,255,255,.65);font-size:.86rem;font-weight:500;">Avg. call-back time</div>
+        </div>
+        <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:20px 16px;text-align:center;">
+          <div style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:1.6rem;color:#fff;line-height:1.15;">Same<br>Day</div>
+          <div style="margin-top:6px;color:rgba(255,255,255,.65);font-size:.86rem;font-weight:500;">Service when possible</div>
+        </div>
+        <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:20px 16px;text-align:center;">
+          <div style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:2rem;color:#fff;line-height:1;">100%</div>
+          <div style="margin-top:6px;color:rgba(255,255,255,.65);font-size:.86rem;font-weight:500;">Upfront pricing</div>
+        </div>
+        <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:20px 16px;text-align:center;">
+          <div style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:2rem;color:#fff;line-height:1;">EPA</div>
+          <div style="margin-top:6px;color:rgba(255,255,255,.65);font-size:.86rem;font-weight:500;">Certified technician</div>
+        </div>
       </div>
     </div>
   </section>
@@ -931,7 +1043,7 @@ class Component extends DCLogic {
     const ty = -(p * travel);                                // text climbs upward as progress grows
     if (this.headlineEl) {
       this.headlineEl.style.opacity = op;
-      this.headlineEl.style.transform = 'translateY(' + ty + 'px)';
+      this.headlineEl.style.transform = 'translateX(-50%) translateY(calc(-50% + ' + ty + 'px))';
       this.headlineEl.style.pointerEvents = op > 0.2 ? 'auto' : 'none';
     }
     if (this.hintEl) this.hintEl.style.opacity = cl(1 - p / 0.05, 0, 1);
@@ -1093,7 +1205,7 @@ class Component extends DCLogic {
       setHeroImg: (e) => { this.heroImgEl = e; },
       setHeroSection: (e) => { this.heroSectionEl = e; if (e) this.updateHero(); },
       setFrame: (e) => { this.frameEl = e; },
-      setVideo: (e) => { this.videoEl = e; if (e) { try { e.muted = true; e.setAttribute('playsinline',''); e.pause(); } catch (_) {} e.addEventListener('loadedmetadata', () => { try { e.currentTime = 0.001; } catch (_) {} this.updateHero(); }, { once: true }); } },
+      setVideo: (e) => { this.videoEl = e; if (e) { try { e.muted = true; e.setAttribute('muted',''); e.setAttribute('playsinline',''); } catch (_) {} e.load(); e.addEventListener('loadedmetadata', () => { const pr = e.play(); if (pr) pr.then(() => { try { e.pause(); e.currentTime = 0; } catch(_){} this.updateHero(); }).catch(() => this.updateHero()); else { try { e.pause(); e.currentTime = 0; } catch(_){} this.updateHero(); } }, { once: true }); } },
       setHeadline: (e) => { this.headlineEl = e; },
       setHint: (e) => { this.hintEl = e; },
       coreServices: coreServices, addServices: addServices, specials: specials,
