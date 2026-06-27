@@ -103,8 +103,8 @@ input,textarea{font-family:inherit;}
 <div data-screen-label="Home">
 
   <sc-if value="{{ heroIgnition }}" hint-placeholder-val="{{ true }}">
-  <section data-screen-label="Hero" ref="{{ setHeroSection }}" style="position:relative;background:linear-gradient(180deg,#0A2E49,#0C3A5B);height:300vh;">
-    <div style="position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;">
+  <section data-screen-label="Hero" ref="{{ setHeroSection }}" style="position:relative;background:#06121E;height:100vh;">
+    <div style="position:absolute;inset:0;overflow:hidden;display:flex;align-items:center;justify-content:center;">
       <div ref="{{ setFrame }}" style="position:relative;width:calc(100% - clamp(16px,3.2vw,44px));height:calc(100% - clamp(16px,3.2vw,44px));max-width:1680px;border-radius:clamp(16px,2vw,26px);overflow:hidden;background:#06121E;box-shadow:0 50px 110px rgba(4,16,28,.62);will-change:opacity,transform;">
         <video ref="{{ setVideo }}" preload="auto" poster="assets/poster-cold.png" src="uploads/hf_20260627_161035_96d1448a-2094-49eb-9bb4-5b1c79782275.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></video>
         <div style="position:absolute;top:0;left:0;right:0;height:34%;background:linear-gradient(180deg,rgba(6,18,30,.66),rgba(6,18,30,0));pointer-events:none;"></div>
@@ -252,7 +252,7 @@ input,textarea{font-family:inherit;}
       <h2 style="margin:0;font-family:'Montserrat',sans-serif;font-weight:700;font-size:clamp(1.8rem,3.5vw,2.7rem);line-height:1.1;letter-spacing:-.02em;color:#0C3A5B;text-wrap:balance;">Sound familiar? We've seen it all.</h2>
       <p style="margin:14px auto 0;max-width:50ch;color:#5B6B78;font-size:clamp(1rem,1.3vw,1.12rem);line-height:1.6;">If your home is doing any of these, it's worth a call — most are quick, affordable fixes when caught early.</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:clamp(14px,1.8vw,18px);">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:clamp(14px,2vw,22px);">
       <div style="background:#fff;border:1px solid #E7EDF2;border-radius:18px;padding:24px;box-shadow:0 1px 2px rgba(8,42,67,.04);transition:transform .25s,box-shadow .25s,border-color .25s;" style-hover="transform:translateY(-5px);box-shadow:0 20px 40px rgba(8,42,67,.12);border-color:#D8E6EE;">
         <span style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:13px;background:#E7F5FA;margin-bottom:14px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0E7E9B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M12 2 8 6M12 2l4 4M12 22l-4-4M12 22l4-4M2 12h20M2 12l4-4M2 12l4 4M22 12l-4-4M22 12l-4 4"/></svg></span>
         <h3 style="margin:0;font-family:'Montserrat',sans-serif;font-weight:600;font-size:1.06rem;color:#0E1A24;">A/C Not Cooling</h3>
@@ -277,11 +277,6 @@ input,textarea{font-family:inherit;}
         <span style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:13px;background:#E7F5FA;margin-bottom:14px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0E7E9B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.6 4.6A2 2 0 1 1 11 8H2M12.6 19.4A2 2 0 1 0 14 16H2M17.6 7.6A2 2 0 1 1 19 11H2"/></svg></span>
         <h3 style="margin:0;font-family:'Montserrat',sans-serif;font-weight:600;font-size:1.06rem;color:#0E1A24;">Poor Airflow</h3>
         <p style="margin:7px 0 0;color:#5B6B78;font-size:.92rem;line-height:1.55;">Weak or uneven airflow points to ducts, filters, or a struggling blower.</p>
-      </div>
-      <div style="background:#fff;border:1px solid #E7EDF2;border-radius:18px;padding:24px;box-shadow:0 1px 2px rgba(8,42,67,.04);transition:transform .25s,box-shadow .25s,border-color .25s;" style-hover="transform:translateY(-5px);box-shadow:0 20px 40px rgba(8,42,67,.12);border-color:#D8E6EE;">
-        <span style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:13px;background:#FDEFE0;margin-bottom:14px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C76A0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg></span>
-        <h3 style="margin:0;font-family:'Montserrat',sans-serif;font-weight:600;font-size:1.06rem;color:#0E1A24;">High Energy Bills</h3>
-        <p style="margin:7px 0 0;color:#5B6B78;font-size:.92rem;line-height:1.55;">A creeping bill usually means your system is working harder than it should.</p>
       </div>
     </div>
   </section>
@@ -946,7 +941,8 @@ input,textarea{font-family:inherit;}
 class Component extends DCLogic {
   state = {
     route: 'home', menuOpen: false, scrolled: false, isMobile: false, openFaq: 0,
-    form: { name: '', email: '', phone: '', message: '' }, err: {}, status: 'idle'
+    form: { name: '', email: '', phone: '', message: '' }, err: {}, status: 'idle',
+    videoEnded: false
   };
 
   componentDidMount() {
@@ -959,8 +955,8 @@ class Component extends DCLogic {
       this._rafPending = true;
       requestAnimationFrame(() => {
         this._rafPending = false;
-        if (this.ignitionActive()) { this.updateHero(); }
-        else { const s = this.getScrollTop() > 20; if (s !== this.state.scrolled) this.setState({ scrolled: s }); }
+        const s = this.getScrollTop() > 20;
+        if (s !== this.state.scrolled) this.setState({ scrolled: s });
         this.parallax();
       });
     };
@@ -968,29 +964,48 @@ class Component extends DCLogic {
     this._resize = () => {
       const m = window.innerWidth < 860;
       if (m !== this.state.isMobile) this.setState({ isMobile: m });
-      this.updateHero();
+      if (m) this._unlockScroll();
     };
     this._resize();
     window.addEventListener('resize', this._resize);
     this.runCounters();
     this.parallax();
-    this.updateHero();
     if (this.reduced) this.forceUpdate();
   }
 
   componentDidUpdate(_, prev) {
     if (prev.route !== this.state.route) {
+      this._unlockScroll();
       window.scrollTo(0, 0);
       this.pageAnim();
       this.runCounters();
     }
-    this.updateHero();
+    if (prev.videoEnded !== this.state.videoEnded) this.updateHero();
   }
 
   componentWillUnmount() {
     window.removeEventListener('hashchange', this._hash);
     window.removeEventListener('scroll', this._scroll, { capture: true });
     window.removeEventListener('resize', this._resize);
+    this._unlockScroll();
+    clearTimeout(this._videoFallback);
+  }
+
+  _lockScroll() {
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+  }
+
+  _unlockScroll() {
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+  }
+
+  onVideoEnded() {
+    clearTimeout(this._videoFallback);
+    this._unlockScroll();
+    this.setState({ videoEnded: true });
+    if (this.hintEl) { this.hintEl.style.opacity = '1'; this.hintEl.style.transition = 'opacity .6s ease'; }
   }
 
   syncRoute() {
@@ -1025,35 +1040,15 @@ class Component extends DCLogic {
   }
 
   updateHero() {
-    const sec = this.heroSectionEl;
-    if (!sec || !this.ignitionActive()) return;
-    const cl = (v, a, b) => (v < a ? a : v > b ? b : v);
-    const winH = window.innerHeight;
-    const total = sec.offsetHeight - winH;
-    const p = cl(total > 0 ? (-sec.getBoundingClientRect().top) / total : 0, 0, 1);
-    const vid = this.videoEl;
-    if (vid && vid.duration && !isNaN(vid.duration)) {
-      const t = p * (vid.duration - 0.05);
-      if (vid.readyState >= 1 && Math.abs((vid.currentTime || 0) - t) > 0.02) { try { vid.currentTime = t; } catch (e) {} }
+    if (!this.ignitionActive() || !this.headlineEl) return;
+    if (!this.state.videoEnded) {
+      this.headlineEl.style.opacity = '1';
+      this.headlineEl.style.transform = 'translateX(-50%) translateY(-50%)';
+      this.headlineEl.style.pointerEvents = 'auto';
+      if (this.hintEl) this.hintEl.style.opacity = '0';
+    } else {
+      if (this.hintEl) { this.hintEl.style.opacity = '1'; this.hintEl.style.transition = 'opacity .6s ease'; }
     }
-    // Same progress p drives BOTH the video scrub (above) and the text motion (here),
-    // so they stay locked together on any device.
-    const op = cl((0.80 - p) / 0.22, 0, 1);                 // fully visible at start, fades out ~58-80%
-    const travel = (window.innerHeight || 800) * 0.55;
-    const ty = -(p * travel);                                // text climbs upward as progress grows
-    if (this.headlineEl) {
-      this.headlineEl.style.opacity = op;
-      this.headlineEl.style.transform = 'translateX(-50%) translateY(calc(-50% + ' + ty + 'px))';
-      this.headlineEl.style.pointerEvents = op > 0.2 ? 'auto' : 'none';
-    }
-    if (this.hintEl) this.hintEl.style.opacity = cl(1 - p / 0.05, 0, 1);
-    if (this.frameEl) {
-      const fo = cl((1 - p) / 0.12, 0, 1);
-      this.frameEl.style.opacity = fo;
-      this.frameEl.style.transform = 'scale(' + (1 + (1 - fo) * 0.04) + ')';
-    }
-    const want = p >= 0.985;
-    if (want !== this.state.scrolled) this.setState({ scrolled: want });
   }
 
   runCounters() {
@@ -1203,9 +1198,9 @@ class Component extends DCLogic {
       setRoot: (e) => { this.rootEl = e; },
       setMain: (e) => { this.mainEl = e; },
       setHeroImg: (e) => { this.heroImgEl = e; },
-      setHeroSection: (e) => { this.heroSectionEl = e; if (e) this.updateHero(); },
+      setHeroSection: (e) => { this.heroSectionEl = e; if (e && !this.state.videoEnded) this._lockScroll(); this.updateHero(); },
       setFrame: (e) => { this.frameEl = e; },
-      setVideo: (e) => { this.videoEl = e; if (e) { try { e.muted = true; e.setAttribute('muted',''); e.setAttribute('playsinline',''); } catch (_) {} e.load(); e.addEventListener('loadedmetadata', () => { const pr = e.play(); if (pr) pr.then(() => { try { e.pause(); e.currentTime = 0; } catch(_){} this.updateHero(); }).catch(() => this.updateHero()); else { try { e.pause(); e.currentTime = 0; } catch(_){} this.updateHero(); } }, { once: true }); } },
+      setVideo: (e) => { this.videoEl = e; if (e && !this.state.videoEnded) { try { e.muted = true; e.setAttribute('muted',''); e.setAttribute('playsinline',''); e.loop = false; } catch(_){} const pr = e.play(); if (pr) pr.catch(() => this._unlockScroll()); e.addEventListener('ended', () => this.onVideoEnded(), { once: true }); e.addEventListener('error', () => this._unlockScroll(), { once: true }); this._videoFallback = setTimeout(() => this._unlockScroll(), 40000); } },
       setHeadline: (e) => { this.headlineEl = e; },
       setHint: (e) => { this.hintEl = e; },
       coreServices: coreServices, addServices: addServices, specials: specials,
