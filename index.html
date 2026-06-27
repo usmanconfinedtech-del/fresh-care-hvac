@@ -1237,16 +1237,26 @@ class Component extends DCLogic {
         this.videoEl = e;
         if (!e) return;
         try { e.muted = true; e.setAttribute('muted',''); e.setAttribute('playsinline',''); e.loop = false; } catch(_) {}
-        // Fast-forward to fill buffer, then enable scrubbing
-        const onReady = () => { try { e.pause(); e.currentTime = 0; e.playbackRate = 1; } catch(_){} this.setState({ videoReady: true }); };
+        e.style.opacity = '0';
+        this._videoReady = false;
+        const onReady = () => {
+          if (this._videoReady) return;
+          this._videoReady = true;
+          e.removeEventListener('progress', checkBuf);
+          e.removeEventListener('ended', onReady);
+          try { e.pause(); e.playbackRate = 1; } catch(_){}
+          e.style.transition = 'opacity .5s ease';
+          e.style.opacity = '1';
+          this.setState({ videoReady: true });
+        };
         const checkBuf = () => {
-          try { if (e.buffered.length && e.buffered.end(e.buffered.length - 1) >= e.duration - 0.4) { e.removeEventListener('progress', checkBuf); onReady(); } } catch(_) {}
+          try { if (e.buffered.length && e.buffered.end(e.buffered.length - 1) >= e.duration - 0.4) onReady(); } catch(_) {}
         };
         e.addEventListener('loadedmetadata', () => {
           e.playbackRate = 16;
           const pr = e.play(); if (pr) pr.catch(() => {});
           e.addEventListener('progress', checkBuf);
-          e.addEventListener('ended', onReady, { once: true });
+          e.addEventListener('ended', onReady);
         }, { once: true });
         e.load();
       },
