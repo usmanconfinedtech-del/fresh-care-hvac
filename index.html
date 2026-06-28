@@ -106,18 +106,11 @@ input,textarea{font-family:inherit;}
   <section data-screen-label="Hero" ref="{{ setHeroSection }}" style="position:relative;background:#06121E;height:300vh;">
     <div style="position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;">
       <div ref="{{ setFrame }}" style="position:relative;width:calc(100% - clamp(16px,3.2vw,44px));height:calc(100% - clamp(16px,3.2vw,44px));max-width:1680px;border-radius:clamp(16px,2vw,26px);overflow:hidden;background:#06121E;box-shadow:0 50px 110px rgba(4,16,28,.62);will-change:opacity,transform;">
-        <video ref="{{ setVideo }}" preload="auto" poster="assets/poster-cold.png" src="uploads/hf_20260627_161035_96d1448a-2094-49eb-9bb4-5b1c79782275.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></video>
-        <sc-if value="{{ videoLoading }}" hint-placeholder-val="{{ true }}">
-          <div style="position:absolute;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:44px;pointer-events:none;">
-            <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
-              <div style="width:160px;height:2px;background:rgba(255,255,255,.12);border-radius:2px;overflow:hidden;position:relative;"><div style="position:absolute;inset:0;background:linear-gradient(90deg,#16A6C9,#F2922A);border-radius:2px;animation:tempShift 1.4s ease-in-out infinite alternate;background-size:300% 100%;"></div></div>
-              <span style="color:rgba(255,255,255,.55);font-family:'Montserrat',sans-serif;font-weight:600;font-size:11px;letter-spacing:.18em;text-transform:uppercase;">Loading</span>
-            </div>
-          </div>
-        </sc-if>
-        <div style="position:absolute;top:0;left:0;right:0;height:34%;background:linear-gradient(180deg,rgba(6,18,30,.66),rgba(6,18,30,0));pointer-events:none;"></div>
-        <div style="position:absolute;left:0;right:0;bottom:0;height:66%;background:linear-gradient(0deg,rgba(6,18,30,.86),rgba(6,18,30,.34) 52%,rgba(6,18,30,0));pointer-events:none;"></div>
-        <div ref="{{ setHeadline }}" style="position:absolute;left:50%;top:50%;text-align:center;width:min(90%,860px);padding:clamp(20px,4vw,44px);opacity:1;transform:translate(-50%,-50%);will-change:opacity,transform;">
+        <video ref="{{ setVideo }}" preload="auto" src="uploads/hf_20260627_161035_96d1448a-2094-49eb-9bb4-5b1c79782275.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;"></video>
+        <div ref="{{ setPosterCover }}" style="position:absolute;inset:0;z-index:1;background:url(assets/poster-cold.png) center/cover no-repeat;transition:opacity .7s ease;pointer-events:none;"></div>
+        <div style="position:absolute;top:0;left:0;right:0;height:34%;z-index:2;background:linear-gradient(180deg,rgba(6,18,30,.66),rgba(6,18,30,0));pointer-events:none;"></div>
+        <div style="position:absolute;left:0;right:0;bottom:0;height:66%;z-index:2;background:linear-gradient(0deg,rgba(6,18,30,.86),rgba(6,18,30,.34) 52%,rgba(6,18,30,0));pointer-events:none;"></div>
+        <div ref="{{ setHeadline }}" style="position:absolute;left:50%;top:50%;z-index:3;text-align:center;width:min(90%,860px);padding:clamp(20px,4vw,44px);opacity:1;transform:translate(-50%,-50%);will-change:opacity,transform;">
           <div style="display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.24);backdrop-filter:blur(8px);padding:8px 15px;border-radius:999px;margin-bottom:22px;">
             <span style="width:9px;height:9px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#7FD6E6,#16A6C9);box-shadow:0 0 12px rgba(127,214,230,.85);"></span>
             <span style="color:#fff;font-family:'Montserrat',sans-serif;font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;">Perfect Temperature, Every Time</span>
@@ -134,11 +127,11 @@ input,textarea{font-family:inherit;}
             </a>
           </div>
         </div>
-        <div ref="{{ setHint }}" style="position:absolute;left:50%;bottom:20px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,.8);font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:.14em;text-transform:uppercase;pointer-events:none;">
+        <div ref="{{ setHint }}" style="position:absolute;left:50%;bottom:20px;z-index:3;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,.8);font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:.14em;text-transform:uppercase;pointer-events:none;">
           Keep scrolling
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation:cueBob 2.2s ease-in-out infinite;"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
-        <div style="position:absolute;inset:0;border-radius:inherit;border:1px solid rgba(255,255,255,.08);pointer-events:none;"></div>
+        <div style="position:absolute;inset:0;z-index:4;border-radius:inherit;border:1px solid rgba(255,255,255,.08);pointer-events:none;"></div>
       </div>
     </div>
   </section>
@@ -270,11 +263,6 @@ input,textarea{font-family:inherit;}
         <span style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:13px;background:#FDEFE0;margin-bottom:14px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C76A0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></span>
         <h3 style="margin:0;font-family:'Montserrat',sans-serif;font-weight:600;font-size:1.06rem;color:#0E1A24;">Furnace Won't Ignite</h3>
         <p style="margin:7px 0 0;color:#5B6B78;font-size:.92rem;line-height:1.55;">No heat on a cold morning usually traces to ignition or a faulty sensor.</p>
-      </div>
-      <div style="background:#fff;border:1px solid #E7EDF2;border-radius:18px;padding:24px;box-shadow:0 1px 2px rgba(8,42,67,.04);transition:transform .25s,box-shadow .25s,border-color .25s;" style-hover="transform:translateY(-5px);box-shadow:0 20px 40px rgba(8,42,67,.12);border-color:#D8E6EE;">
-        <span style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:13px;background:#E7F5FA;margin-bottom:14px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0E7E9B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></span>
-        <h3 style="margin:0;font-family:'Montserrat',sans-serif;font-weight:600;font-size:1.06rem;color:#0E1A24;">Strange Noises</h3>
-        <p style="margin:7px 0 0;color:#5B6B78;font-size:.92rem;line-height:1.55;">Banging, squealing, or rattling means a part is loose or wearing out.</p>
       </div>
       <div style="background:#fff;border:1px solid #E7EDF2;border-radius:18px;padding:24px;box-shadow:0 1px 2px rgba(8,42,67,.04);transition:transform .25s,box-shadow .25s,border-color .25s;" style-hover="transform:translateY(-5px);box-shadow:0 20px 40px rgba(8,42,67,.12);border-color:#D8E6EE;">
         <span style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:13px;background:#E7F5FA;margin-bottom:14px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0E7E9B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
@@ -1241,10 +1229,14 @@ class Component extends DCLogic {
         e.addEventListener('canplay', () => {
           if (this._videoReady) return;
           this._videoReady = true;
+          e.style.transition = 'opacity .7s ease';
+          e.style.opacity = '1';
+          if (this.posterCoverEl) this.posterCoverEl.style.opacity = '0';
           this.setState({ videoReady: true });
         }, { once: true });
         e.load();
       },
+      setPosterCover: (e) => { this.posterCoverEl = e; },
       setHeadline: (e) => { this.headlineEl = e; },
       setHint: (e) => { this.hintEl = e; },
       coreServices: coreServices, addServices: addServices, specials: specials,
