@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./scroll-scrub-video.js"></script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -36,9 +37,6 @@ input,textarea{font-family:inherit;}
 @keyframes barPulse{0%,100%{box-shadow:0 -6px 22px rgba(224,123,18,.30);}50%{box-shadow:0 -6px 32px rgba(224,123,18,.52);}}
 @keyframes cueBob{0%,100%{transform:translateY(0);opacity:.85;}50%{transform:translateY(7px);opacity:.4;}}
 @media (prefers-reduced-motion: reduce){*{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important;}}
-[data-hero-vid]{opacity:0;transition:opacity .8s ease;}
-[data-hero-vid].rdy{opacity:1;}
-[data-poster-cover]{transition:opacity .8s ease;}
 </style>
 </helmet>
 <div ref="{{ setRoot }}" style="position:relative;">
@@ -105,71 +103,62 @@ input,textarea{font-family:inherit;}
 <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
 <div data-screen-label="Home">
 
-  <sc-if value="{{ heroIgnition }}" hint-placeholder-val="{{ true }}">
-  <section data-screen-label="Hero" ref="{{ setHeroSection }}" style="position:relative;background:#06121E;height:300vh;">
-    <div style="position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;">
-      <div ref="{{ setFrame }}" style="position:relative;width:calc(100% - clamp(16px,3.2vw,44px));height:calc(100% - clamp(16px,3.2vw,44px));max-width:1680px;border-radius:clamp(16px,2vw,26px);overflow:hidden;background:#06121E;box-shadow:0 50px 110px rgba(4,16,28,.62);will-change:opacity,transform;">
-        <video ref="{{ setVideo }}" data-hero-vid preload="auto" src="uploads/hf_20260627_161035_96d1448a-2094-49eb-9bb4-5b1c79782275.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></video>
-        <div ref="{{ setPosterCover }}" data-poster-cover style="position:absolute;inset:0;z-index:1;background:url(assets/poster-cold.png) center/cover no-repeat;pointer-events:none;"></div>
-        <div style="position:absolute;top:0;left:0;right:0;height:34%;z-index:2;background:linear-gradient(180deg,rgba(6,18,30,.66),rgba(6,18,30,0));pointer-events:none;"></div>
-        <div style="position:absolute;left:0;right:0;bottom:0;height:66%;z-index:2;background:linear-gradient(0deg,rgba(6,18,30,.86),rgba(6,18,30,.34) 52%,rgba(6,18,30,0));pointer-events:none;"></div>
-        <div ref="{{ setHeadline }}" style="position:absolute;left:50%;top:50%;z-index:3;text-align:center;width:min(90%,860px);padding:clamp(20px,4vw,44px);opacity:1;transform:translate(-50%,-50%);will-change:opacity,transform;">
-          <div style="display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.24);backdrop-filter:blur(8px);padding:8px 15px;border-radius:999px;margin-bottom:22px;">
-            <span style="width:9px;height:9px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#7FD6E6,#16A6C9);box-shadow:0 0 12px rgba(127,214,230,.85);"></span>
-            <span style="color:#fff;font-family:'Montserrat',sans-serif;font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;">Perfect Temperature, Every Time</span>
-          </div>
-          <h1 style="margin:0 auto;max-width:18ch;color:#fff;font-family:'Montserrat',sans-serif;font-weight:600;font-size:clamp(2.5rem,6.4vw,5rem);line-height:1.0;letter-spacing:-.02em;text-wrap:balance;">Comfort You Can Count On — <span style="background:linear-gradient(100deg,#7FD6E6,#F2A24E);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">Year-Round.</span></h1>
-          <p style="margin:18px auto 0;max-width:46ch;color:rgba(255,255,255,.86);font-size:clamp(1.05rem,1.5vw,1.28rem);line-height:1.55;">Honest, expert HVAC service for San Jose homes.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:30px;justify-content:center;">
-            <a href="tel:+14085129578" style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(180deg,#F7A23E,#F2922A);color:#fff;text-decoration:none;font-family:'Montserrat',sans-serif;font-weight:600;font-size:1.05rem;padding:16px 26px;border-radius:14px;box-shadow:0 14px 30px rgba(224,123,18,.4);transition:transform .2s,box-shadow .2s;" style-hover="transform:translateY(-2px);box-shadow:0 20px 38px rgba(224,123,18,.5);">
-              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              Call (408) 512-9578
-            </a>
-            <a href="#/contact" style="display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.10);color:#fff;text-decoration:none;font-family:'Montserrat',sans-serif;font-weight:600;font-size:1.05rem;padding:16px 24px;border-radius:14px;border:1.5px solid rgba(255,255,255,.55);backdrop-filter:blur(6px);transition:background .2s,transform .2s;" style-hover="background:rgba(255,255,255,.2);transform:translateY(-2px);">Request Service
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-            </a>
-          </div>
-        </div>
-        <div ref="{{ setHint }}" style="position:absolute;left:50%;bottom:20px;z-index:3;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,.8);font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:.14em;text-transform:uppercase;pointer-events:none;">
-          Keep scrolling
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation:cueBob 2.2s ease-in-out infinite;"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div style="position:absolute;inset:0;z-index:4;border-radius:inherit;border:1px solid rgba(255,255,255,.08);pointer-events:none;"></div>
-      </div>
-    </div>
-  </section>
-  </sc-if>
+  <div id="ssv-hero"></div>
 
-  <sc-if value="{{ heroStatic }}" hint-placeholder-val="{{ false }}">
-  <section data-screen-label="Hero" style="position:relative;min-height:clamp(560px,92vh,880px);display:flex;align-items:center;overflow:hidden;background:#0A2E49;">
-    <img src="assets/poster-bloom.png" alt="Residential HVAC condenser unit at golden hour in a San Jose neighborhood" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:reveal .9s ease both;">
-    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,42,67,.5),rgba(8,42,67,.72) 58%,rgba(7,33,52,.92));"></div>
-    <div style="position:absolute;inset:0;mix-blend-mode:soft-light;opacity:.8;background:linear-gradient(115deg,rgba(22,166,201,.8),rgba(22,166,201,0) 45%,rgba(242,146,42,.7));"></div>
-    <div style="position:relative;z-index:2;width:100%;max-width:1240px;margin:0 auto;padding:118px clamp(20px,5vw,40px) 84px;">
-      <div style="display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(8px);padding:8px 15px;border-radius:999px;margin-bottom:22px;">
-        <span style="width:8px;height:8px;border-radius:50%;background:#16A6C9;box-shadow:0 0 0 4px rgba(22,166,201,.25);"></span>
-        <span style="color:#fff;font-family:'Montserrat',sans-serif;font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;">Perfect Temperature, Every Time</span>
-      </div>
-      <h1 style="margin:0;max-width:16ch;color:#fff;font-family:'Montserrat',sans-serif;font-weight:600;font-size:clamp(2.5rem,8.4vw,3.6rem);line-height:1.02;letter-spacing:-.02em;text-wrap:balance;">Comfort You Can Count On — <span style="background:linear-gradient(100deg,#7FD6E6,#F2A24E);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">Year-Round.</span></h1>
-      <p style="margin:20px 0 0;max-width:48ch;color:rgba(255,255,255,.86);font-size:clamp(1.05rem,1.6vw,1.2rem);line-height:1.6;">Honest, expert heating &amp; cooling service for San Jose homes. Repairs, maintenance, and installs done right the first time.</p>
-      <div style="display:flex;flex-wrap:wrap;gap:13px;margin-top:30px;">
-        <a href="tel:+14085129578" style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(180deg,#F7A23E,#F2922A);color:#fff;text-decoration:none;font-family:'Montserrat',sans-serif;font-weight:600;font-size:1.05rem;padding:16px 24px;border-radius:14px;box-shadow:0 14px 30px rgba(224,123,18,.4);">
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          Call (408) 512-9578
+  <section data-screen-label="Why Choose Us" style="padding:clamp(72px,9vw,116px) clamp(20px,5vw,40px);background:#fff;overflow:hidden;">
+    <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:clamp(48px,7vw,88px);align-items:center;">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:9px;margin-bottom:20px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F2922A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          <span style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#F2922A;">Why Choose Us</span>
+        </div>
+        <h2 style="margin:0 0 16px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:clamp(2rem,3.6vw,3rem);line-height:1.1;letter-spacing:-.025em;color:#0E1A24;">A Legacy of Excellence<br>in Heating &amp; Cooling</h2>
+        <p style="margin:0 0 36px;color:#5B6B78;font-size:clamp(.98rem,1.2vw,1.08rem);line-height:1.72;max-width:50ch;">At Fresh Care, we deliver more than heating and cooling — we deliver peace of mind. With 11+ years of experience and a commitment to every customer in San Jose.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:36px;">
+          <div style="background:#F6F8FA;border-radius:14px;padding:22px 18px;display:flex;flex-direction:column;gap:13px;">
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:11px;background:rgba(242,146,42,.13);">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#F2922A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.3 2.3-2.4-.6-.6-2.4 2.3-2.3z"/></svg>
+            </span>
+            <span style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:.97rem;color:#0E1A24;">Expert Technicians</span>
+          </div>
+          <div style="background:#F6F8FA;border-radius:14px;padding:22px 18px;display:flex;flex-direction:column;gap:13px;">
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:11px;background:rgba(22,166,201,.12);">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#16A6C9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </span>
+            <span style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:.97rem;color:#0E1A24;">Same-Day Service</span>
+          </div>
+          <div style="background:#F6F8FA;border-radius:14px;padding:22px 18px;display:flex;flex-direction:column;gap:13px;">
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:11px;background:rgba(22,166,201,.12);">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#16A6C9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.6 4.6A2 2 0 1 1 11 8H2M12.6 19.4A2 2 0 1 0 14 16H2M17.6 7.6A2 2 0 1 1 19 11H2"/></svg>
+            </span>
+            <span style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:.97rem;color:#0E1A24;">Tailored Solutions</span>
+          </div>
+          <div style="background:#F6F8FA;border-radius:14px;padding:22px 18px;display:flex;flex-direction:column;gap:13px;">
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:11px;background:rgba(242,146,42,.13);">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#F2922A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+            </span>
+            <span style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:.97rem;color:#0E1A24;">Efficient Systems</span>
+          </div>
+        </div>
+        <a href="tel:+14085129578" style="display:inline-flex;align-items:center;gap:10px;background:#F2922A;color:#fff;text-decoration:none;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;padding:16px 26px;border-radius:12px;box-shadow:0 8px 22px rgba(242,146,42,.38);transition:transform .2s,box-shadow .2s;" style-hover="transform:translateY(-2px);box-shadow:0 14px 32px rgba(242,146,42,.46);">
+          Call Us: (408) 512-9578
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
-        <a href="#/contact" style="display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.10);color:#fff;text-decoration:none;font-family:'Montserrat',sans-serif;font-weight:600;font-size:1.05rem;padding:16px 22px;border-radius:14px;border:1.5px solid rgba(255,255,255,.55);">Request Service</a>
       </div>
-      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:9px 18px;margin-top:34px;">
-        <span style="display:inline-flex;align-items:center;gap:7px;color:rgba(255,255,255,.82);font-size:13px;font-weight:500;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16A6C9" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>EPA-Certified</span>
-        <span style="width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.3);"></span>
-        <span style="display:inline-flex;align-items:center;gap:7px;color:rgba(255,255,255,.82);font-size:13px;font-weight:500;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16A6C9" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>11+ Years</span>
-        <span style="width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.3);"></span>
-        <span style="display:inline-flex;align-items:center;gap:7px;color:rgba(255,255,255,.82);font-size:13px;font-weight:500;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16A6C9" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Locally Owned</span>
+      <div style="position:relative;min-height:460px;">
+        <div style="position:absolute;left:0;top:0;width:58%;height:80%;border-radius:20px;overflow:hidden;box-shadow:0 28px 62px rgba(8,42,67,.16);">
+          <img src="https://images.pexels.com/photos/7597206/pexels-photo-7597206.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Fresh Care HVAC technician at work" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div style="position:absolute;right:0;top:8%;width:50%;height:70%;border-radius:20px;overflow:hidden;box-shadow:0 28px 62px rgba(8,42,67,.16);">
+          <img src="assets/poster-bloom.png" alt="Residential HVAC system" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div style="position:absolute;bottom:2%;right:2%;z-index:2;background:#fff;border-radius:18px;padding:18px 24px;box-shadow:0 20px 52px rgba(8,42,67,.18);min-width:170px;">
+          <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:2.4rem;color:#0E1A24;line-height:1;">200+</div>
+          <div style="font-family:'Montserrat',sans-serif;font-size:.875rem;color:#5B6B78;margin-top:5px;font-weight:500;">San Jose Homes Served</div>
+        </div>
       </div>
     </div>
-    <div style="position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,#16A6C9,#5FB7C2,#F2922A);"></div>
   </section>
-  </sc-if>
 
   <sc-if value="{{ heroPhoto }}" hint-placeholder-val="{{ false }}">
   <section data-screen-label="Hero" style="position:relative;min-height:clamp(580px,94vh,940px);display:flex;align-items:center;overflow:hidden;background:#082A43;">
@@ -940,8 +929,7 @@ input,textarea{font-family:inherit;}
 class Component extends DCLogic {
   state = {
     route: 'home', menuOpen: false, scrolled: false, isMobile: false, openFaq: 0,
-    form: { name: '', email: '', phone: '', message: '' }, err: {}, status: 'idle',
-    videoReady: false
+    form: { name: '', email: '', phone: '', message: '' }, err: {}, status: 'idle'
   };
 
   componentDidMount() {
@@ -954,8 +942,8 @@ class Component extends DCLogic {
       this._rafPending = true;
       requestAnimationFrame(() => {
         this._rafPending = false;
-        if (this.ignitionActive()) { this.updateHero(); }
-        else { const s = this.getScrollTop() > 20; if (s !== this.state.scrolled) this.setState({ scrolled: s }); }
+        const pastHero = this._heroScrub ? this._heroScrub.scrolledPast : this.getScrollTop() > 20;
+        if (pastHero !== this.state.scrolled) this.setState({ scrolled: pastHero });
         this.parallax();
       });
     };
@@ -963,13 +951,25 @@ class Component extends DCLogic {
     this._resize = () => {
       const m = window.innerWidth < 860;
       if (m !== this.state.isMobile) this.setState({ isMobile: m });
-      this.updateHero();
     };
     this._resize();
     window.addEventListener('resize', this._resize);
+    // Init scroll-scrub hero
+    const heroEl = document.getElementById('ssv-hero');
+    if (heroEl && typeof ScrollScrubVideo !== 'undefined') {
+      this._heroScrub = new ScrollScrubVideo({
+        container: heroEl,
+        videoSrc: 'uploads/hf_20260627_161035_96d1448a-2094-49eb-9bb4-5b1c79782275.mp4',
+        posterSrc: 'assets/poster-cold.png',
+        pinScrollHeight: '300vh',
+        headline: [
+          { html: 'Comfort You Can Count On —' },
+          { html: '<span style="background:linear-gradient(100deg,#7FD6E6,#F2A24E);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">Year-Round.</span>' }
+        ]
+      });
+    }
     this.runCounters();
     this.parallax();
-    this.updateHero();
     if (this.reduced) this.forceUpdate();
   }
 
@@ -979,13 +979,13 @@ class Component extends DCLogic {
       this.pageAnim();
       this.runCounters();
     }
-    this.updateHero();
   }
 
   componentWillUnmount() {
     window.removeEventListener('hashchange', this._hash);
     window.removeEventListener('scroll', this._scroll, { capture: true });
     window.removeEventListener('resize', this._resize);
+    if (this._heroScrub) this._heroScrub.destroy();
   }
 
   syncRoute() {
@@ -1012,65 +1012,6 @@ class Component extends DCLogic {
     if (this.reduced || !this.heroImgEl) return;
     const y = this.getScrollTop();
     if (y < 900) this.heroImgEl.style.transform = 'translate3d(0,' + (y * 0.16) + 'px,0) scale(1.14)';
-  }
-
-  ignitionActive() {
-    const hs = this.props.heroVariant || 'Scroll Ignition';
-    return this.state.route === 'home' && hs === 'Scroll Ignition' && !this.state.isMobile && !this.reduced && !!this.heroSectionEl;
-  }
-
-  updateHero() {
-    const sec = this.heroSectionEl;
-    if (!sec || !this.ignitionActive()) return;
-    const cl = (v, a, b) => (v < a ? a : v > b ? b : v);
-    const winH = window.innerHeight;
-    const total = sec.offsetHeight - winH;
-    const p = cl(total > 0 ? (-sec.getBoundingClientRect().top) / total : 0, 0, 1);
-
-    // Scrub video — one seek at a time, always chasing latest target
-    if (this.state.videoReady) {
-      const vid = this.videoEl;
-      if (vid && vid.duration) {
-        this._scrubTarget = cl(p * vid.duration, 0, vid.duration);
-        if (!this._seekPending) {
-          this._seekPending = true;
-          const doSeek = () => {
-            const v = this.videoEl;
-            if (!v) { this._seekPending = false; return; }
-            const t = this._scrubTarget;
-            if (Math.abs((v.currentTime || 0) - t) > 0.015) {
-              try { v.currentTime = t; } catch(_) {}
-              v.addEventListener('seeked', () => {
-                this._seekPending = false;
-                if (Math.abs((this.videoEl ? this.videoEl.currentTime : t) - this._scrubTarget) > 0.05) {
-                  this._seekPending = true;
-                  requestAnimationFrame(doSeek);
-                }
-              }, { once: true });
-            } else {
-              this._seekPending = false;
-            }
-          };
-          requestAnimationFrame(doSeek);
-        }
-      }
-    }
-
-    // Text: fade + drift up with scroll
-    const op = cl((0.82 - p) / 0.22, 0, 1);
-    const ty = -(p * winH * 0.42);
-    if (this.headlineEl) {
-      this.headlineEl.style.opacity = op;
-      this.headlineEl.style.transform = 'translateX(-50%) translateY(calc(-50% + ' + ty + 'px))';
-      this.headlineEl.style.pointerEvents = op > 0.2 ? 'auto' : 'none';
-    }
-    if (this.hintEl) this.hintEl.style.opacity = cl((0.08 - p) / 0.08, 0, 1);
-    if (this.frameEl) {
-      const fo = cl((1 - p) / 0.1, 0, 1);
-      this.frameEl.style.opacity = fo;
-    }
-    const want = p >= 0.985;
-    if (want !== this.state.scrolled) this.setState({ scrolled: want });
   }
 
   runCounters() {
@@ -1165,7 +1106,6 @@ class Component extends DCLogic {
     ];
     const stats = [
       { v: '11+', l: 'Years of Experience', c: '11', s: '+' },
-      { v: 'EPA', l: 'Certified Technician', c: '', s: '' },
       { v: '100%', l: 'Honest, Upfront Pricing', c: '100', s: '%' },
       { v: 'Bay Area', l: 'Local & Family-Rooted', c: '', s: '' }
     ];
@@ -1211,10 +1151,6 @@ class Component extends DCLogic {
       showBar: (this.props.stickyCallBar !== false) && this.state.isMobile,
       mapEnabled: this.props.mapEnabled !== false,
       mapDisabled: !(this.props.mapEnabled !== false),
-      heroIgnition: heroStyle === 'Scroll Ignition' && !this.state.isMobile && !this.reduced,
-      heroStatic: heroStyle === 'Scroll Ignition' && (this.state.isMobile || this.reduced),
-      videoReady: this.state.videoReady,
-      videoLoading: !this.state.videoReady,
       heroPhoto: heroStyle === 'Immersive Photo',
       heroAurora: heroStyle === 'Aurora Gradient',
       toggleMenu: () => this.setState((s) => ({ menuOpen: !s.menuOpen })),
@@ -1222,35 +1158,6 @@ class Component extends DCLogic {
       setRoot: (e) => { this.rootEl = e; },
       setMain: (e) => { this.mainEl = e; },
       setHeroImg: (e) => { this.heroImgEl = e; },
-      setHeroSection: (e) => { this.heroSectionEl = e; if (e) this.updateHero(); },
-      setFrame: (e) => { this.frameEl = e; },
-      setVideo: (e) => {
-        this.videoEl = e;
-        if (!e) return;
-        try { e.muted = true; e.setAttribute('muted',''); e.setAttribute('playsinline',''); e.loop = false; } catch(_) {}
-        this._videoReady = false;
-        this._videoShown = false;
-        const showVideo = () => {
-          if (this._videoShown) return;
-          this._videoShown = true;
-          e.classList.add('rdy');
-          if (this.posterCoverEl) this.posterCoverEl.style.opacity = '0';
-        };
-        e.addEventListener('loadedmetadata', () => {
-          // play+pause primes the decoder so currentTime seeks actually work
-          const pr = e.play();
-          if (pr) pr.then(() => { try { e.pause(); e.currentTime = 0; } catch(_){} }).catch(() => {});
-          if (this._videoReady) return;
-          this._videoReady = true;
-          this.setState({ videoReady: true });
-        }, { once: true });
-        e.addEventListener('loadeddata', showVideo, { once: true });
-        e.addEventListener('seeked', showVideo, { once: true });
-        e.load();
-      },
-      setPosterCover: (e) => { this.posterCoverEl = e; },
-      setHeadline: (e) => { this.headlineEl = e; },
-      setHint: (e) => { this.hintEl = e; },
       coreServices: coreServices, addServices: addServices, specials: specials,
       stats: stats, whyPoints: whyPoints, values: values,
       form: this.state.form, err: this.state.err,
