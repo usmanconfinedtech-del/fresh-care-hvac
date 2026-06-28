@@ -36,6 +36,9 @@ input,textarea{font-family:inherit;}
 @keyframes barPulse{0%,100%{box-shadow:0 -6px 22px rgba(224,123,18,.30);}50%{box-shadow:0 -6px 32px rgba(224,123,18,.52);}}
 @keyframes cueBob{0%,100%{transform:translateY(0);opacity:.85;}50%{transform:translateY(7px);opacity:.4;}}
 @media (prefers-reduced-motion: reduce){*{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important;}}
+[data-hero-vid]{opacity:0;transition:opacity .8s ease;}
+[data-hero-vid].rdy{opacity:1;}
+[data-poster-cover]{transition:opacity .8s ease;}
 </style>
 </helmet>
 <div ref="{{ setRoot }}" style="position:relative;">
@@ -106,8 +109,8 @@ input,textarea{font-family:inherit;}
   <section data-screen-label="Hero" ref="{{ setHeroSection }}" style="position:relative;background:#06121E;height:300vh;">
     <div style="position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;">
       <div ref="{{ setFrame }}" style="position:relative;width:calc(100% - clamp(16px,3.2vw,44px));height:calc(100% - clamp(16px,3.2vw,44px));max-width:1680px;border-radius:clamp(16px,2vw,26px);overflow:hidden;background:#06121E;box-shadow:0 50px 110px rgba(4,16,28,.62);will-change:opacity,transform;">
-        <video ref="{{ setVideo }}" preload="auto" src="uploads/hf_20260627_161035_96d1448a-2094-49eb-9bb4-5b1c79782275.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;"></video>
-        <div ref="{{ setPosterCover }}" style="position:absolute;inset:0;z-index:1;background:url(assets/poster-cold.png) center/cover no-repeat;transition:opacity .7s ease;pointer-events:none;"></div>
+        <video ref="{{ setVideo }}" data-hero-vid preload="auto" src="uploads/hf_20260627_161035_96d1448a-2094-49eb-9bb4-5b1c79782275.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></video>
+        <div ref="{{ setPosterCover }}" data-poster-cover style="position:absolute;inset:0;z-index:1;background:url(assets/poster-cold.png) center/cover no-repeat;pointer-events:none;"></div>
         <div style="position:absolute;top:0;left:0;right:0;height:34%;z-index:2;background:linear-gradient(180deg,rgba(6,18,30,.66),rgba(6,18,30,0));pointer-events:none;"></div>
         <div style="position:absolute;left:0;right:0;bottom:0;height:66%;z-index:2;background:linear-gradient(0deg,rgba(6,18,30,.86),rgba(6,18,30,.34) 52%,rgba(6,18,30,0));pointer-events:none;"></div>
         <div ref="{{ setHeadline }}" style="position:absolute;left:50%;top:50%;z-index:3;text-align:center;width:min(90%,860px);padding:clamp(20px,4vw,44px);opacity:1;transform:translate(-50%,-50%);will-change:opacity,transform;">
@@ -1226,14 +1229,23 @@ class Component extends DCLogic {
         if (!e) return;
         try { e.muted = true; e.setAttribute('muted',''); e.setAttribute('playsinline',''); e.loop = false; } catch(_) {}
         this._videoReady = false;
-        e.addEventListener('canplay', () => {
+        this._videoShown = false;
+        const showVideo = () => {
+          if (this._videoShown) return;
+          this._videoShown = true;
+          e.classList.add('rdy');
+          if (this.posterCoverEl) this.posterCoverEl.style.opacity = '0';
+        };
+        e.addEventListener('loadedmetadata', () => {
+          // play+pause primes the decoder so currentTime seeks actually work
+          const pr = e.play();
+          if (pr) pr.then(() => { try { e.pause(); e.currentTime = 0; } catch(_){} }).catch(() => {});
           if (this._videoReady) return;
           this._videoReady = true;
-          e.style.transition = 'opacity .7s ease';
-          e.style.opacity = '1';
-          if (this.posterCoverEl) this.posterCoverEl.style.opacity = '0';
           this.setState({ videoReady: true });
         }, { once: true });
+        e.addEventListener('loadeddata', showVideo, { once: true });
+        e.addEventListener('seeked', showVideo, { once: true });
         e.load();
       },
       setPosterCover: (e) => { this.posterCoverEl = e; },
